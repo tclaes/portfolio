@@ -1,6 +1,6 @@
 /*!
  * Start Bootstrap - Createive v4.0.0-beta (https://startbootstrap.com/template-overviews/creative)
- * Copyright 2013-2017 Start Bootstrap
+ * Copyright 2013-2020 Start Bootstrap
  * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap-creative/blob/master/LICENSE)
  */
 body,
@@ -342,3 +342,25 @@ header.masthead {
 
 .btn-xl {
   padding: 15px 30px; }
+
+.cards {
+  display: flex;
+  flex-wrap: wrap; }
+
+.skillcard {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1 1 450px;
+  flex-direction: column;
+  margin: 2rem 1rem; }
+  .skillcard i {
+    margin-bottom: 1rem; }
+
+.grey {
+  color: #6c757d; }
+
+.scroll-down {
+  background: white;
+  border-radius: 50%;
+  flex: 0 1 50px; }
