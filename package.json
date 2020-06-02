@@ -1,7 +1,7 @@
 {
   "title": ".tcla portfoloio",
   "name": "tcla_portfolio",
-  "version": "4.0.0-beta",
+  "version": "1.0",
   "description": "TCLA bootstrap theme",
   "scripts": {
     "build": "gulp"
@@ -15,21 +15,21 @@
     "template"
   ],
   "dependencies": {
-    "bootstrap": "^4.0.0-beta",
+    "bootstrap": "^4.5.0",
     "font-awesome": "4.7.0",
-    "jquery": "^3.2.1",
+    "jquery": "^3.5.1",
     "jquery.easing": "^1.4.1",
     "magnific-popup": "^1.1.0",
-    "popper.js": "^1.11.1",
-    "scrollreveal": "3.3.6"
+    "popper.js": "^1.16.1",
+    "scrollreveal": "4.0.6"
   },
   "devDependencies": {
     "browser-sync": "^2.26.7",
-    "gulp": "^3.9.1",
-    "gulp-clean-css": "3.7.0",
-    "gulp-header": "1.8.9",
-    "gulp-rename": "^1.2.2",
-    "gulp-sass": "^3.1.0",
-    "gulp-uglify": "3.0.0"
+    "gulp": "^4.0.2",
+    "gulp-clean-css": "4.3.0",
+    "gulp-header": "2.0.9",
+    "gulp-rename": "^2.0.0",
+    "gulp-sass": "^4.1.0",
+    "gulp-uglify": "3.0.2"
   }
 }
