@@ -7,22 +7,10 @@ var rename = require("gulp-rename");
 var uglify = require('gulp-uglify');
 var pkg = require('./package.json');
 
-// Set the banner content
-var banner = ['/*!\n',
-  ' * Start Bootstrap - <%= pkg.title %> v<%= pkg.version %> (<%= pkg.homepage %>)\n',
-  ' * Copyright 2013-' + (new Date()).getFullYear(), ' <%= pkg.author %>\n',
-  ' * Licensed under <%= pkg.license %> (https://github.com/BlackrockDigital/<%= pkg.name %>/blob/master/LICENSE)\n',
-  ' */\n',
-  ''
-].join('');
-
 // Compiles SCSS files from /scss into /css
-gulp.task('sass', function() {
+gulp.task('sass', () => {
   return gulp.src('scss/creative.scss')
     .pipe(sass())
-    .pipe(header(banner, {
-      pkg: pkg
-    }))
     .pipe(gulp.dest('css'))
     .pipe(browserSync.reload({
       stream: true
@@ -30,7 +18,7 @@ gulp.task('sass', function() {
 });
 
 // Minify compiled CSS
-gulp.task('minify-css', ['sass'], function() {
+gulp.task('minify-css', gulp.series(['sass'], () => {
   return gulp.src('css/creative.css')
     .pipe(cleanCSS({
       compatibility: 'ie8'
@@ -42,15 +30,12 @@ gulp.task('minify-css', ['sass'], function() {
     .pipe(browserSync.reload({
       stream: true
     }))
-});
+}));
 
 // Minify custom JS
-gulp.task('minify-js', function() {
+gulp.task('minify-js', () => {
   return gulp.src('js/creative.js')
     .pipe(uglify())
-    .pipe(header(banner, {
-      pkg: pkg
-    }))
     .pipe(rename({
       suffix: '.min'
     }))
@@ -62,7 +47,7 @@ gulp.task('minify-js', function() {
 
 // Copy vendor files from /node_modules into /vendor
 // NOTE: requires `npm install` before running!
-gulp.task('copy', function() {
+gulp.task('copy', () => {
   gulp.src([
       'node_modules/bootstrap/dist/**/*',
       '!**/npm.js',
@@ -98,10 +83,10 @@ gulp.task('copy', function() {
 })
 
 // Default task
-gulp.task('default', ['sass', 'minify-css', 'minify-js', 'copy']);
+gulp.task('default', gulp.series(['sass', 'minify-css', 'minify-js']));
 
 // Configure the browserSync task
-gulp.task('browserSync', function() {
+gulp.task('browserSync', () => {
   browserSync.init({
     server: {
       baseDir: ''
@@ -110,11 +95,11 @@ gulp.task('browserSync', function() {
 })
 
 // Dev task with browserSync
-gulp.task('dev', ['browserSync', 'sass', 'minify-css', 'minify-js'], function() {
+gulp.task('dev', gulp.parallel(['browserSync', 'sass', 'minify-css', 'minify-js'], () => {
   gulp.watch('scss/*.scss', ['sass']);
   gulp.watch('css/*.css', ['minify-css']);
   gulp.watch('js/*.js', ['minify-js']);
   // Reloads the browser whenever HTML or JS files change
   gulp.watch('*.html', browserSync.reload);
   gulp.watch('js/**/*.js', browserSync.reload);
-});
+}));

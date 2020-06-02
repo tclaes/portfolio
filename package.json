@@ -1,7 +1,6 @@
 {
   "title": ".tcla portfoloio",
   "name": "tcla_portfolio",
-  "version": "1.0",
   "description": "TCLA bootstrap theme",
   "scripts": {
     "build": "gulp"
