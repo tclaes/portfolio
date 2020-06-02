@@ -31,9 +31,6 @@ jobs:
       run: |
         echo Add other actions to build,
         echo test, and deploy your project.
-        
-    - name: ESLint Action
-      uses: hallee/eslint-action@1.0.1
     
     - name: Lighthouse Audit
       uses: jakejarvis/lighthouse-action@v0.3.2
