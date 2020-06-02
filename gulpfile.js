@@ -10,7 +10,7 @@ var uglify = require('gulp-uglify');
 gulp.task('sass', () => {
   return gulp.src('scss/creative.scss')
     .pipe(sass())
-    .pipe(gulp.dest('css'))
+    .pipe(gulp.dest('dist/css'))
     .pipe(browserSync.reload({
       stream: true
     }))
@@ -18,14 +18,14 @@ gulp.task('sass', () => {
 
 // Minify compiled CSS
 gulp.task('minify-css', gulp.series(['sass'], () => {
-  return gulp.src('css/creative.css')
+  return gulp.src('dist/css/creative.css')
     .pipe(cleanCSS({
       compatibility: 'ie8'
     }))
     .pipe(rename({
       suffix: '.min'
     }))
-    .pipe(gulp.dest('css'))
+    .pipe(gulp.dest('dist/css'))
     .pipe(browserSync.reload({
       stream: true
     }))
@@ -38,11 +38,16 @@ gulp.task('minify-js', () => {
     .pipe(rename({
       suffix: '.min'
     }))
-    .pipe(gulp.dest('js'))
+    .pipe(gulp.dest('dist/js'))
     .pipe(browserSync.reload({
       stream: true
     }))
 });
+
+gulp.task('copy-assets', () => {
+  gulp.src(['index.html', 'header.jpg'])
+  .pipe(gulp.dest('dist/'));
+})
 
 // Copy vendor files from /node_modules into /vendor
 // NOTE: requires `npm install` before running!
@@ -82,7 +87,7 @@ gulp.task('copy', () => {
 })
 
 // Default task
-gulp.task('default', gulp.series(['sass', 'minify-css', 'minify-js']));
+gulp.task('default', gulp.series(['sass', 'minify-css', 'minify-js', 'copy-assets']));
 
 // Configure the browserSync task
 gulp.task('browserSync', () => {
