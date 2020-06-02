@@ -3,5 +3,6 @@
 TCLA portfolio website gebaseerd op het startbootstrap theme
 
 ## Deployment
-Site is deployed to <a href="https://www.tcla.be">www.tcla.be</a> and
-<a href="https://agreeable-pebble-010700c03.azurestaticapps.net/#services"> Azure static web app </a>
+
+Site is deployed to [www.tcla.be](https://www.tcla.be) and
+[Azure static web app](https://agreeable-pebble-010700c03.azurestaticapps.net/#services)
