@@ -44,7 +44,7 @@ gulp.task('minify-js', () => {
     }))
 });
 
-gulp.task('copy-assets', () => {
+gulp.task('copy-assets', async () => {
   gulp.src(['index.html', 'header.jpg'])
   .pipe(gulp.dest('dist/'));
 })
