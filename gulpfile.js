@@ -51,29 +51,29 @@ gulp.task('copy-assets', async () => {
 
 // Copy vendor files from /node_modules into /vendor
 // NOTE: requires `npm install` before running!
-gulp.task('copy', () => {
+gulp.task('copy', async () => {
   gulp.src([
       'node_modules/bootstrap/dist/**/*',
       '!**/npm.js',
       '!**/bootstrap-theme.*',
       '!**/*.map'
     ])
-    .pipe(gulp.dest('vendor/bootstrap'))
+    .pipe(gulp.dest('dist/vendor/bootstrap'))
 
   gulp.src(['node_modules/jquery/dist/jquery.js', 'node_modules/jquery/dist/jquery.min.js'])
-    .pipe(gulp.dest('vendor/jquery'))
+    .pipe(gulp.dest('dist/vendor/jquery'))
 
   gulp.src(['node_modules/magnific-popup/dist/*'])
-    .pipe(gulp.dest('vendor/magnific-popup'))
+    .pipe(gulp.dest('dist/vendor/magnific-popup'))
 
   gulp.src(['node_modules/scrollreveal/dist/*.js'])
-    .pipe(gulp.dest('vendor/scrollreveal'))
+    .pipe(gulp.dest('dist/vendor/scrollreveal'))
 
   gulp.src(['node_modules/popper.js/dist/umd/popper.js', 'node_modules/popper.js/dist/umd/popper.min.js'])
-    .pipe(gulp.dest('vendor/popper'))
+    .pipe(gulp.dest('dist/vendor/popper'))
 
   gulp.src(['node_modules/jquery.easing/*.js'])
-    .pipe(gulp.dest('vendor/jquery-easing'))
+    .pipe(gulp.dest('dist/vendor/jquery-easing'))
 
   gulp.src([
       'node_modules/font-awesome/**',
@@ -83,11 +83,11 @@ gulp.task('copy', () => {
       '!node_modules/font-awesome/*.md',
       '!node_modules/font-awesome/*.json'
     ])
-    .pipe(gulp.dest('vendor/font-awesome'))
+    .pipe(gulp.dest('dist/vendor/font-awesome'))
 })
 
 // Default task
-gulp.task('default', gulp.series(['sass', 'minify-css', 'minify-js', 'copy-assets']));
+gulp.task('default', gulp.series(['sass', 'minify-css', 'minify-js', 'copy-assets', 'copy']));
 
 // Configure the browserSync task
 gulp.task('browserSync', () => {
